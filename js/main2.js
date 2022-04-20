@@ -5,6 +5,11 @@ document.querySelector('#reset').addEventListener('click', resetPage)
 function getSong(){
   const bpm = document.querySelector('input').value
 
+    if(bpm < 40 || bpm > 220) {
+    alert('Please choose a tempo between 40 and 220 beats per minute')
+    return;
+  }
+
   fetch(`https://api.getsongbpm.com/tempo/?api_key=c3d889f1a41e5e3ddeb1a9fb7f110cf6&bpm=${bpm}`)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
